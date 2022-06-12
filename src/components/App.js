@@ -1,4 +1,5 @@
 import video from "../data/video.js";
+import Comments from "./Comments.js";
 import Title from "./Title.js";
 
 function App() {
@@ -13,6 +14,7 @@ function App() {
         title="Thinking in React"
       />
       <Title video={video} />
+      <Comments video={video} />
     </div>
   );
 }

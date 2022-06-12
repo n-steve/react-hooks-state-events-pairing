@@ -1,15 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 
 function Title({ video }) {
-  // console.log(video.upvotes + 1);
+  const [counter, setCounter] = useState(0);
+  const [newCounter, setNewCounter] = useState(0);
 
-  function handleAddLike(add) {
-    console.log("Click +", add);
+  function increaseLike() {
+    setCounter((count) => count + 1);
   }
 
-  function handleDisLikeClick(add) {
-    console.log("click -", add);
+  function increaseDisLike() {
+    setNewCounter((count) => count + 1);
   }
+
   return (
     <div>
       <h1>{video.title}</h1>
@@ -17,17 +19,16 @@ function Title({ video }) {
       <p>
         {video.views} Views | Uploaded {video.createdAt}
       </p>
-      <p>
-        <button className="like" onClick={handleAddLike}>
-          {video.upvotes} 👍
-        </button>
-        <button className="disLike" onClick={handleDisLikeClick}>
-          {video.downvotes} 👎
-        </button>
-      </p>
-      <p>
-        <button>Hide Comments</button>
-      </p>
+      <div>
+        <p>
+          <button className="like" onClick={increaseLike}>
+            {counter + video.upvotes}👍
+          </button>
+          <button className="disLike" onClick={increaseDisLike}>
+            {newCounter + video.downvotes} 👎
+          </button>
+        </p>
+      </div>
     </div>
   );
 }
